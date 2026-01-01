@@ -1,0 +1,57 @@
+# --- Environment ---
+.env
+.env.local
+*.env
+!*.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+out/
+build/
+dist/
+.turbo/
+next-env.d.ts
+npm-debug.log*
+
+# --- VS Code ---
+.vscode/
+!.vscode/extensions.json
+
+# --- Logs ---
+*.log
+logs/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Temporary files ---
+*.tmp
+*.swp
+.cache/
+
+# --- AI models / voice data (never commit) ---
+*.pt
+*.pth
+*.onnx
+*.ckpt
+*.wav
+*.mp3
+*.flac
+models/
+datasets/
+backend/storage/

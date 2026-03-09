@@ -1,0 +1,101 @@
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 40rem;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.back {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  align-self: flex-start;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+}
+
+.readyMessage {
+  color: #22c55e;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.sectionHeading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+  margin-bottom: 0.75rem;
+}
+
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.completeButton {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+}
+
+.completeButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tips {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  padding-top: 0.5rem;
+}
+
+.tips h3 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tips ul {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

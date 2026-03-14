@@ -1,0 +1,103 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  opacity: 0.65;
+}
+
+.targetVoice {
+  font-size: 0.95rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.fileLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fileInput {
+  font: inherit;
+}
+
+.hint {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.playbackRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.playbackLabel {
+  font-weight: 600;
+  font-size: 0.85rem;
+  min-width: 4.5rem;
+}
+
+.audio {
+  max-width: 100%;
+}
+
+.convertButton {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+.convertButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.metrics dt {
+  opacity: 0.6;
+}
+
+.metrics dd {
+  font-weight: 600;
+}

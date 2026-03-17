@@ -1,0 +1,69 @@
+.empty {
+  opacity: 0.6;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.filename {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.details {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.valid {
+  color: #22c55e;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.invalid {
+  color: #ef4444;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.delete {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 20%, transparent);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background: color-mix(in srgb, #ef4444 12%, transparent);
+  border-color: #ef4444;
+}

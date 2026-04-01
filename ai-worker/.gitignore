@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Vendored upstream source (GPL-3.0, see docs/model-selection.md) — kept
+# out of this project's own history; re-clone via README.md "Installation".
+vendor/
+
+# Never commit model weights or the download cache. (campplus_cn_common.bin,
+# the one real weight file that ships inside vendor/seed-vc, is already
+# covered by the vendor/ rule above.)
+models/
+*.pt
+*.pth
+*.bin
+*.npy
+
+# Human-listening benchmark WAVs (Phase 3.2 Step 10) — local review
+# artifacts, not project source.
+benchmark_artifacts/

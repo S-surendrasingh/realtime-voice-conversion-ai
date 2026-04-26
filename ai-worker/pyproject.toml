@@ -1,0 +1,62 @@
+[project]
+name = "voiceshift-ai-worker"
+version = "0.1.0"
+description = "CPU-only voice conversion engine for the Realtime AI Voice Conversion platform (Phase 3)"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "pydantic-settings>=2.5",
+    "soundfile>=0.12",
+    "numpy>=1.26,<2.0",
+    "scipy>=1.13",
+    "psutil>=6.0",
+    # Real neural engine (SeedVCVoiceEngine) — installed from the CPU wheel
+    # index, never the CUDA index. See README.md "Installation".
+    "torch>=2.4,<2.5",
+    "torchaudio>=2.4,<2.5",
+    "torchvision>=0.19,<0.20",
+    "transformers>=4.46,<4.47",
+    "librosa>=0.10,<0.11",
+    "huggingface-hub>=0.28",
+    "einops>=0.8",
+    "munch>=4.0",
+    "pyyaml>=6.0",
+    # Unconditionally imported by vendor/seed-vc's modules/length_regulator.py
+    # (VectorQuantize) even though this checkpoint's config never instantiates
+    # it — a real transitive dependency, discovered by attempting to load the
+    # model, not assumed from upstream's own requirements.txt. See
+    # docs/model-selection.md.
+    "descript-audio-codec",
+    # Local IPC transport for the resident streaming engine (Phase 3.1) — see
+    # docs/phase3.1-resident-engine.md. Binds 127.0.0.1 only.
+    "websockets>=13.0",
+    # OpenVoice V2 evaluation engine (Phase 3.2) — CPU execution provider
+    # only, never onnxruntime-gpu. See docs/phase3.2-openvoice-onnx.md.
+    "onnxruntime>=1.18,<2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = [
+    "unit: fast, dependency-free tests (default)",
+    "integration: CLI/end-to-end tests using the passthrough engine",
+    "ai: real Seed-VC model tests — downloads/loads real weights, not run by default",
+    "benchmark: real timing/CPU/RAM measurement runs, not run by default",
+    "performance: real streaming/throughput benchmark runs (real weights, slow), not run by default",
+]
+addopts = "-m 'not ai and not benchmark and not performance'"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

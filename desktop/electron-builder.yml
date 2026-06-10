@@ -1,0 +1,51 @@
+# Packaging FOUNDATION only (Phase 4 Step 45, extended Phase 5 Steps 41-42)
+# — configured but NOT run on Windows or macOS from this Linux dev machine.
+# Do not treat a successful `npm run build:unpack` here as proof of a
+# working Windows/macOS installer; it only proves the Linux unpacked build
+# resolves. See docs/phase5-virtual-audio.md "Packaging & Distribution" for
+# what remains before a real cross-platform release.
+appId: ai.voiceshift.desktop
+productName: VoiceShift AI
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+# The resident Python engine is NOT bundled yet (see
+# docs/phase5-virtual-audio.md "Python Engine Packaging Strategy"). Once a
+# standalone per-platform engine executable exists (see
+# src/main/engineProcessManager.ts resolvePackagedEnginePythonPath), it
+# will be added here as extraResources:
+#   - from: resources/voiceshift-engine/${os}
+#     to: voiceshift-engine/${os}
+asarUnpack: []
+linux:
+  target: AppImage
+  category: AudioVideo
+win:
+  target: nsis
+  # VB-CABLE itself is a separate, user-installed third-party driver — see
+  # docs/windows-virtual-audio.md. VoiceShift only detects and routes to
+  # it; it is never bundled or silently installed (Step 5/45).
+mac:
+  target: dmg
+  category: public.app-category.utilities
+  # Real code signing/notarization are NOT configured — a real Apple
+  # Developer ID and notarization credentials are required, neither of
+  # which exist in this dev environment. Do not claim a signed/notarized
+  # build without both. hardenedRuntime + entitlements below are the
+  # correct SHAPE for when signing is added, not proof it's done.
+  hardenedRuntime: true
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    NSMicrophoneUsageDescription: >-
+      VoiceShift AI needs microphone access to capture your voice for live
+      AI voice conversion. Audio is processed locally and is never saved
+      unless you explicitly enable debug recording in Settings.
+  # BlackHole is a separate, user-installed third-party driver — see
+  # docs/macos-virtual-audio.md. Never bundled or silently installed.
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
